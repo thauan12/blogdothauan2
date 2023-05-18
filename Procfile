@@ -1,0 +1,1 @@
+web: gunicorn meusite.wsgi:blogdothauan2 --log-file -
