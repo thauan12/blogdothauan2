@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block titulo %} Meu Blog ==> Post {{ post.titulo }} {% endblock %}
+
+{% block conteudo %}
+<section data-bs-version="5.1" class="features16 cid-tzVjbxlXj9" id="features17-6">
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-5">
+                    <div class="image-wrapper">
+                        <img src="{{ post.imagem.thumb.url }}" alt="Imagem do post {{ post.titulo }}"
+                             width="438" height="438">
+                    </div>
+                </div>
+                <div class="col-12 col-lg">
+                    <div class="text-wrapper">
+                        <h6 class="card-title mbr-fonts-style display-5">
+                            <strong>{{ post.titulo }}</strong>
+                        </h6>
+                        <div class="text-warning">
+                            {% if messages %}
+                              {% for m in messages %}
+                                <p>{{ m }}</p>
+                              {% endfor %}
+                            {% endif %}
+                        </div>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-4">
+                            {{ post.corpo|linebreaks }}
+                        </p>
+                        <br>
+                        <h4>
+                            <a href="{% url 'enviar_post' post.id %}">
+                                Enviar este post...
+                            </a>
+                        </h4>
+
+                    </div>
+                </div>
+            </div>
+            <p>
+                <a href="{% url 'comentar_post' post.id %}" class="btn btn-dark">Comentar post...</a>
+            </p>
+            <table class="table table-striped">
+                <tr>
+                    <th>Comentário de:</th>
+                    <th>Texto</th>
+                </tr>
+            {% for c in comentarios %}
+                <tr>
+                    <td>{{ c.nome }}</td>
+                    <td>{{ c.texto }}</td>
+                </tr>
+            {% empty %}
+                <td colspan="2">O post ainda não possui comentários.</td>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

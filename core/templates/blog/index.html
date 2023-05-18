@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load blog_tags %}
+{% load static %}
+
+{% block titulo %} Meu Blog &#9554; Página Inicial {% endblock %}
+
+{% block conteudo %}
+<section data-bs-version="5.1" class="content10 cid-tzVgp39K95" id="content10-1">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md">
+                
+                <h6 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    Pode navegar a vontade!!!
+                </h6>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <p class="bg-info text-light display-7 px-2">Temos {% total_posts %} posts a disposição.</p>
+                <p class="mbr-text mbr-fonts-style display-7">
+                    Fique à vontade para navegar, comentar e compartilhar.
+                </p>
+                <h3>Ultimos Posts publicados:</h3>
+                {% mostrar_ultimos_posts 3 %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-bs-version="5.1" class="content11 cid-tzVh8oOL0w" id="content11-2">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" href="{% url 'listar_posts' %}">Meus Posts</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

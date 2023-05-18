@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block titulo %}Meu Blog ==> listar Posts{% endblock %}
+
+{% block conteudo %}
+<section data-bs-version="5.1" class="content10 cid-tzVgp39K95" id="content10-1">
+    {% for p in posts %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md">
+
+                <h6 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+                    {{ p.titulo }}
+                </h6>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <p class="mbr-text mbr-fonts-style display-7">
+                    {{ p.corpo|truncatewords:15|linebreaks }}
+                </p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="mbr-section-btn align-center">
+                        <a class="btn btn-primary display-4"
+                           href="{% url 'detalhe_post' p.publicado.year p.publicado.month p.publicado.day p.slug %}">Mais...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    {% endfor %}
+    {% include "includes/paginacao.html" with page=page_obj %}
+</section>
+
+{% endblock %}

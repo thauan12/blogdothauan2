@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block titulo %} Meu Blog ==> Comentando Post {{ post.titulo }} {% endblock %}
+
+{% block conteudo %}
+<section data-bs-version="5.1" class="features16 cid-tzVjbxlXj9" id="features17-6">
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-8">
+                    <div class="text-wrapper">
+                        <h6 class="card-title mbr-fonts-style display-5">
+                            <strong>Comentando Post {{ post.titulo }}</strong>
+                        </h6>
+                        {% if user.is_authenticated %}
+                        <form class="form form-vertical" action="" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label class="form-label" for="nome">Nome</label>
+                                <input class="form-control" type="text" id="nome" name="nome" value="{{ user.username }}" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input class="form-control" type="text" id="email" name="email" value="{{ user.email }}" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label for="texto">Texto</label>
+                                <textarea class="form-control" id="texto" name="texto" cols="40" rows="20"></textarea>
+                            </div>
+                            <div>
+                                <input class="btn btn-primary" type="submit" value="Enviar">
+                            </div>
+                        </form>
+                        {% else %}
+                        <h3 class="text-info">Página Disponível apenas para usuários autenticados</h3>
+                        <h4 class="text-warning"> Por favor faça login ou cadastre-se. </h4>
+                        <p><a href="{% url 'listar_posts' %}" class="btn btn-warning">
+                            Voltar aos posts.
+                        </a></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
