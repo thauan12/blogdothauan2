@@ -1,5 +1,5 @@
 """
-URL configuration for blogdomarcos project.
+URL configuration for blogdothauan project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/dev/topics/http/urls/
@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.conf.urls.static import static
-from blogdomarcos import settings
+from blogdothauan import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
